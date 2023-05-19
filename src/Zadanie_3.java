@@ -23,7 +23,7 @@ public class Zadanie_3 extends JFrame {
     JLabel l1, l2,l3,l4,l5,l6;
     JTextField t1, t2;
     String S;
-    double x1,x2,f,x;
+    double x1,x2,f,x,h=0.01;
     eWork knopa=new  eWork();
     JFrame frame=new JFrame("MinimalStaticChart");
 
@@ -55,11 +55,9 @@ public class Zadanie_3 extends JFrame {
         add(b4);
         add(l1);
         add(l6);
-        add(b2);
         add(b1);
 
         b1.addActionListener(knopa);
-        b2.addActionListener(knopa);
         b3.addActionListener(knopa);
         b4.addActionListener(knopa);
     }
@@ -82,21 +80,22 @@ public class Zadanie_3 extends JFrame {
                     t2.setText(null);
                 }
 
-                if (e.getSource()==b2) {
-                    x1=Double.parseDouble(t1.getText());
-                    x2=Double.parseDouble(t2.getText());
-                    x=(x2-x1);
-                    f=(pow(x, 2) * cos(x)) + sin(pow(x, 2));
-                    S=" f(x)= "+f;
-                    JOptionPane.showMessageDialog(null,S);
-                }
+//                if (e.getSource()==b2) {
+//                    x1=Double.parseDouble(t1.getText());
+//                    x2=Double.parseDouble(t2.getText());
+//                    x=(x2-x1);
+//                    f=(pow(x, 2) * cos(x)) + sin(pow(x, 2));
+//                    S=" f(x)= "+f;
+//                    JOptionPane.showMessageDialog(null,S);
+//                }
                 if (e.getSource()==b3) {
-                    double delta=0.5;
+
+                    //double delta=0.5;
                     x1=Double.parseDouble(t1.getText());
                     x2=Double.parseDouble(t2.getText());
                     XYSeries series=new XYSeries("(pow(x, 2) * cos(x)) + sin(pow(x, 2))");
-                    for (double i=x-delta;i<=x+delta;i+=2*delta/100){
-                        series.add(i,(pow(x, 2) * cos(x)) + sin(pow(x, 2)));
+                    for (double i=x1;i<=x2;i+=h){
+                        series.add(i,(pow(i, 2) * cos(i)) + sin(pow(i, 2)));
                     }
                     XYDataset xyDataset=new XYSeriesCollection(series);
                     JFreeChart chart=ChartFactory.createXYLineChart("(pow(x, 2) * cos(x)) + sin(pow(x, 2))","x","(pow(x, 2) * cos(x)) + sin(pow(x, 2))",xyDataset, PlotOrientation.VERTICAL,true,true,true);

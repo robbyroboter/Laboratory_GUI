@@ -9,11 +9,13 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+import java.util.Random;
+
 public class Zadanie_4 extends JFrame {
-    JButton b1,b2;
-    JLabel l1, l2;
-    JTextField t1, t2;
-    String str,path;
+    Random rand=new Random();
+    JButton b1;
+    JLabel l1, l2, l3,l4, l5, l6,l7, l8,l9;
+    JTextField t1, t2, t3, t4, t5, t6,t7;
     eWork knopa=new  eWork();
 
     // Настройка будущего поля
@@ -21,25 +23,51 @@ public class Zadanie_4 extends JFrame {
         super(s);
         setLayout(new FlowLayout());
         b1 =new JButton("Записать");
-        b2 =new JButton("Очистить");
 
-        l1 =new JLabel("Введите строку");
-        l2 =new JLabel("Введите путь к файлу");
-        //D:\\практика вуз\\Информатика\\Lab_GUI_files\\Zadanie_1.txt
-        t1 =new JTextField(30);
-        t1.setDocument(new JTextFieldLimit(25));
+        l1 =new JLabel("Вывести 7 случайных чисел");
+        l2=new JLabel("                                       ");
+        l3=new JLabel("                                                                      ");
+        l4=new JLabel("                                                                      ");
+        l5=new JLabel("                                                                      ");
+        l6=new JLabel("                                                                      ");
+        l7=new JLabel("                                                                      ");
+        l8=new JLabel("                                                                      ");
+        l9=new JLabel("                                       ");
+        t1 =new JTextField(5);
+        t2 =new JTextField(5);
+        t3 =new JTextField(5);
+        t4 =new JTextField(5);
+        t5 =new JTextField(5);
+        t6 =new JTextField(5);
+        t7 =new JTextField(5);
 
-        t2 =new JTextField(40);
+        t1.disable();
+        t2.disable();
+        t3.disable();
+        t4.disable();
+        t5.disable();
+        t6.disable();
+        t7.disable();
 
         add(l1);
-        add(t1);
         add(l2);
-        add(t2);
         add(b1);
-        add(b2);
+        add(l9);
+        add(t1);
+        add(l3);
+        add(t2);
+        add(l4);
+        add(t3);
+        add(l5);
+        add(t4);
+        add(l6);
+        add(t5);
+        add(l7);
+        add(t6);
+        add(l8);
+        add(t7);
 
         b1.addActionListener(knopa);
-        b2.addActionListener(knopa);
     }
 
     // Задание параметров полю
@@ -47,7 +75,7 @@ public class Zadanie_4 extends JFrame {
         Zadanie_4 g = new Zadanie_4("Задание 4");
         g.setVisible(true);
         g.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        g.setSize(480, 250);
+        g.setSize(400, 200);
         g.setResizable(false);
         g.setLocationRelativeTo(null);
     }
@@ -56,28 +84,16 @@ public class Zadanie_4 extends JFrame {
         public void actionPerformed(ActionEvent e) {
             try {
                 if (e.getSource()==b1) {
-
+                    t1.setText(Integer.toString(rand.nextInt(10)));
+                    t2.setText(Integer.toString(rand.nextInt(10)));
+                    t3.setText(Integer.toString(rand.nextInt(10)));
+                    t4.setText(Integer.toString(rand.nextInt(10)));
+                    t5.setText(Integer.toString(rand.nextInt(10)));
+                    t6.setText(Integer.toString(rand.nextInt(10)));
+                    t7.setText(Integer.toString(rand.nextInt(10)));
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Введите путь и строку");
-            }
-        }
-    }
-
-    // для лимитирования ввода символов
-    public class JTextFieldLimit extends PlainDocument {
-        private int limit;
-
-        JTextFieldLimit(int limit) {
-            super();
-            this.limit = limit;
-        }
-
-        public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
-            if (str == null) return;
-
-            if ((getLength() + str.length()) <= limit) {
-                super.insertString(offset, str, attr);
             }
         }
     }
