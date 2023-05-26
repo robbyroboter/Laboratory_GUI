@@ -95,7 +95,7 @@ public class Zadanie_2 extends JFrame {
 
 
                     //Переменные для записи данных в файл
-                    FileOutputStream file_Out_Str = new FileOutputStream(file, true);
+                    FileOutputStream file_Out_Str = new FileOutputStream(file);
                     OutputStreamWriter fWr = new OutputStreamWriter(file_Out_Str);
                     BufferedWriter file_BW = new BufferedWriter(fWr);
 
@@ -135,6 +135,7 @@ public class Zadanie_2 extends JFrame {
                     t3.setText(array[2]);
                     t4.setText(array[3]);
                     t5.setText(array[4]);
+                    file_BR.close();
                 }
 
                 if (e.getSource() == b2) {
